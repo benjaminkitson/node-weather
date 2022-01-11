@@ -13,6 +13,12 @@ let weather
 //// location request ////
 
 request({ json: true, url: location }, function (error, response) {
+
+  if (error) {
+    console.log("Request failed")
+    return
+  }
+
   const data = response.body;
   const coords = data.features[0].center.map((coord => coord.toFixed(4)));
   [longitude, latitude] = coords
