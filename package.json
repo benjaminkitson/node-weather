@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/benjaminkitson/node-weather#readme",
   "dependencies": {
+    "chalk": "^4.0.0",
     "postman-request": "^2.88.1-postman.31"
   }
 }
