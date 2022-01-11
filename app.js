@@ -1,19 +1,23 @@
 const request = require("postman-request");
 const chalk = require("chalk");
+const secret = require('./secret.js');
+
+const geocode = secret.GEOCODE
+const weather = secret.WEATHER
 
 
 //mapbox
 
 const search = process.argv[2]
 
-const location = `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=pk.eyJ1IjoiYmVuazEzIiwiYSI6ImNreWExNWFzYjAxM24ycW84dDZoNmp1eHoifQ.y2iTi6ZWriTeUu29Dwoszg&limit=1`
+const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${geocode}`
 
 let latitude, longitude;
-let weather
+let weatherURL
 
 //// location request ////
 
-request({ json: true, url: location }, function (error, response) {
+request({ json: true, url: locationURL }, function (error, response) {
 
   if (error) {
     console.log(chalk.red("Location request failed"))
@@ -32,11 +36,10 @@ request({ json: true, url: location }, function (error, response) {
   console.log(chalk.green("Success!"))
   console.log(`Search query: ${process.argv[2]}`)
   console.log(`Latitude: ${chalk.green(coords[1])}; Longitude: ${chalk.green(coords[0])}`)
-  weather = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=2faed7e8eafc113ae52daf1dc6e39ea2`
-
+  weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${weather}`
   //// weather request ////
 
-  request({ json: true, url: weather }, function (error, response) {
+  request({ json: true, url: weatherURL }, function (error, response) {
 
     if (error) {
       console.log(chalk.red("Weather request failed"))
@@ -46,6 +49,6 @@ request({ json: true, url: location }, function (error, response) {
     const data = response.body;
     const temp = data.current.temp;
     const feelsLike = data.current.feels_like;
-    console.log(`It's ${chalk.blue(temp)} degrees outside, but it feels like ${chalk.blue(feelsLike)}.`)
+    console.log(`It's ${chalk.blue(temp + "C")} outside, but it feels like ${chalk.blue(feelsLike + "C")}.`)
   })
 })
