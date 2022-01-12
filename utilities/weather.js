@@ -1,14 +1,15 @@
 const request = require('postman-request');
-const chalk = require('chalk');
-
 const secret = require('../secret.js');
 const weather = secret.WEATHER
 
 function weatherFunction(coords, callback) {
-  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${weather}`
+  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.latitude}&lon=${coords.longitude}&units=metric&appid=${weather}`
   request({json:true, url: weatherURL}, function(error, response) {
     if (error) {
-      callback("Weather request failed", undefined)
+      callback("Request failed.", undefined)
+    } else if (response.body.error) {
+      console.log(response.body.error)
+      callback("Unknown location.", undefined)
     } else {
       const data = response.body;
       callback(undefined, {
@@ -19,8 +20,5 @@ function weatherFunction(coords, callback) {
   })
 }
 
-weatherFunction([51,0], function(error, response) {
-  console.log(error ? error : response)
-})
 
 module.exports = weatherFunction;
