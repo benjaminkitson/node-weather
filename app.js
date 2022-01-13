@@ -10,9 +10,9 @@ if (!location) {
     if (error) {
       console.log(error)
     } else {
-      weatherFunction(geocodeData, (error, weatherData) => {
+      weatherFunction(geocodeData, (error, {temp, feelsLike}) => {
         console.log(location)
-        console.log(error ? error : weatherData)
+        console.log(error ? error : `It's ${temp}°C but it feels like ${feelsLike}°C`)
       })
     }
   });
