@@ -1,24 +1,16 @@
 {
-  "name": "weather",
+  "name": "web-server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/benjaminkitson/node-weather.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/benjaminkitson/node-weather/issues"
-  },
-  "homepage": "https://github.com/benjaminkitson/node-weather#readme",
   "dependencies": {
-    "chalk": "^4.0.0",
-    "postman-request": "^2.88.1-postman.31"
+    "express": "^4.17.2",
+    "hbs": "^4.2.0"
   }
 }
