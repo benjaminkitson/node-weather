@@ -38,11 +38,11 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
   if (!req.query.location) {
     return res.send({
-      error: "You must provide an location"
+      error: "You must provide a location"
     })
   }
 
-  getGeocode(req.query.location, (error, response) => {
+  getGeocode(req.query.location, (error, response = {}) => {
     if (error) {
       return res.send({error})
     }
@@ -59,6 +59,7 @@ app.get('/weather', (req, res) => {
       })
     })
   })
+
 })
 
 app.get('/products', (req,res) => {
