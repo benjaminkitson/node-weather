@@ -1,8 +1,8 @@
 const request = require('postman-request');
-const secret = require('../secret.js');
+const secret = require('./secret.js');
 const weather = secret.WEATHER
 
-function weatherFunction({latitude, longitude}, callback) {
+function getWeather({latitude, longitude}, callback) {
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${weather}`
   request({json:true, url: weatherURL}, function(error, {body: weatherData}) {
     if (error) {
@@ -21,4 +21,4 @@ function weatherFunction({latitude, longitude}, callback) {
 }
 
 
-module.exports = weatherFunction;
+module.exports = getWeather;

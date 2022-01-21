@@ -1,8 +1,8 @@
 const request = require('postman-request');
-const secret = require('../secret.js');
+const secret = require('./secret.js');
 const geocode = secret.GEOCODE
 
-function geocodeFunction(location, callback) {
+function getGeocode(location, callback) {
   const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${geocode}`
   request({ json: true, url: locationURL }, (error, response) => {
     if (error) {
@@ -19,4 +19,4 @@ function geocodeFunction(location, callback) {
   })
 }
 
-module.exports = geocodeFunction
+module.exports = getGeocode

@@ -1,6 +1,9 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
+const request = require('postman-request');
+const getWeather = require('./utilities/weather.js')
+const getGeocode = require('./utilities/geocode.js')
 
 const app = express()
 
@@ -33,17 +36,29 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-  if (!req.query.address) {
+  if (!req.query.location) {
     return res.send({
-      error: "You must provide an address"
+      error: "You must provide an location"
     })
   }
 
-  res.send({
-    address: req.query.address,
-    forecast: "Rain lol"
-  })
+  getGeocode(req.query.location, (error, response) => {
+    if (error) {
+      return res.send({error})
+    }
 
+    getWeather(response, (error, response) => {
+      if (error) {
+        return res.send({error})
+      }
+
+      res.send({
+        location: req.query.location,
+        temp: response.temp,
+        feelsLike: response.feelsLike
+      })
+    })
+  })
 })
 
 app.get('/products', (req,res) => {
