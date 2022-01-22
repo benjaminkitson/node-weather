@@ -1,3 +1,7 @@
+html {
+  background: linear-gradient(rgb(0, 98, 255), #64f2ff);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +28,7 @@
 .footer {
   width: 100vw;
   height: 10vh;
-  background-color: grey;
+  background-color: rgb(255, 255, 255);
 }
 
 .icons {
@@ -48,5 +52,12 @@
 .flex-space {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
