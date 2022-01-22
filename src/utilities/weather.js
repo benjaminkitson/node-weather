@@ -11,10 +11,15 @@ function getWeather({latitude, longitude}, callback) {
       console.log(weatherData.error)
       callback("Unknown location.", undefined)
     } else {
-      const {temp, feels_like:feelsLike} = weatherData.current;
+      const {temp, feels_like:feelsLike, weather, sunrise, sunset, wind_speed:windSpeed} = weatherData.current;
       callback(undefined, {
         temp,
-        feelsLike
+        feelsLike,
+        weather: weather[0].description,
+        icon: weather[0].icon,
+        sunrise,
+        sunset,
+        windSpeed,
       })
     }
   })

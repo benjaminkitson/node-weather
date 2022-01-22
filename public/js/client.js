@@ -20,7 +20,7 @@ weatherForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const url = `http://localhost:3000/weather?location=${search.value}`
   fetchWeather(url, (weather) => {
-    console.log(weather)
-    weatherContainer.innerHTML = JSON.stringify(weather)
+    console.log(weather.response)
+    weatherContainer.innerHTML = JSON.stringify(weather.response)
   })
 })

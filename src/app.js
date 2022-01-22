@@ -53,9 +53,7 @@ app.get('/weather', (req, res) => {
       }
 
       res.send({
-        location: req.query.location,
-        temp: response.temp,
-        feelsLike: response.feelsLike
+        response
       })
     })
   })
