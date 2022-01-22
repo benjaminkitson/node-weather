@@ -21,7 +21,7 @@ weatherForm.addEventListener('submit', (e) => {
   const url = `http://localhost:3000/weather?location=${search.value}`
   fetchWeather(url, (weather) => {
     weatherItems.forEach((weatherItem, i) => {
-      weatherItem.innerHTML = Object.entries(weather.response)[i]
+      weatherItem.innerHTML = Object.values(weather.response)[i]
     })
   })
 })
