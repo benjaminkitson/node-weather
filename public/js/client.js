@@ -13,14 +13,15 @@ function fetchWeather(url, func) {
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
-const weatherContainer = document.querySelector('.weather-container')
+const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
 
 
 weatherForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const url = `http://localhost:3000/weather?location=${search.value}`
   fetchWeather(url, (weather) => {
-    console.log(weather.response)
-    weatherContainer.innerHTML = JSON.stringify(weather.response)
+    weatherItems.forEach((weatherItem, i) => {
+      weatherItem.innerHTML = Object.entries(weather.response)[i]
+    })
   })
 })
