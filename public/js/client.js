@@ -11,18 +11,19 @@ function fetchWeather(url, func) {
 
 }
 
-
-const weatherForm = document.querySelector('form')
+const searchButton = document.querySelector('.search-button')
+const searchContainer = document.querySelector('.search-field-container')
 const search = document.querySelector('input')
 const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
 
 
-weatherForm.addEventListener('submit', (e) => {
+searchButton.addEventListener('mouseup', (e) => {
   e.preventDefault()
-  const url = `http://localhost:3000/weather?location=${search.value}`
-  fetchWeather(url, (weather) => {
-    weatherItems.forEach((weatherItem, i) => {
-      weatherItem.innerHTML = Object.values(weather.response)[i]
-    })
-  })
+  searchContainer.classList.add('expanded')
+  // const url = `http://localhost:3000/weather?location=${search.value}`
+  // fetchWeather(url, (weather) => {
+  //   weatherItems.forEach((weatherItem, i) => {
+  //     weatherItem.innerHTML = Object.values(weather.response)[i]
+  //   })
+  // })
 })
