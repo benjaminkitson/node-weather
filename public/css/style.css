@@ -45,8 +45,8 @@ html {
   width: 100%;
   border: none;
   border-radius: 50px;
-  padding-left: 10%;
-  text-align: left;
+  padding-right: 50px;
+  text-align: center;
 }
 
 .search-button {
@@ -55,11 +55,26 @@ html {
   top: 0;
   height: 50px;
   width: 50px;
-  background-color: rgb(75, 199, 255);
-  color: white;
+  background-color: rgb(167, 216, 255);
+  color: black;
   border-radius: 40px;
   border: 2px solid rgb(75, 165, 255);
   margin-left: 5px;
+  transition: all 0.8s
+}
+
+.active {
+  background-color: rgb(75, 199, 255);
+  transition: all 0.8s;
+}
+
+.search-button:hover {
+  background-color: rgb(48, 158, 209);
+  transition: all 0.2s;
+}
+
+.search-button:active {
+  background-color: rgb(32, 134, 181);
 }
 
 .weather-container {

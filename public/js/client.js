@@ -19,11 +19,15 @@ const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
 
 searchButton.addEventListener('mouseup', (e) => {
   e.preventDefault()
-  searchContainer.classList.add('expanded')
-  // const url = `http://localhost:3000/weather?location=${search.value}`
-  // fetchWeather(url, (weather) => {
-  //   weatherItems.forEach((weatherItem, i) => {
-  //     weatherItem.innerHTML = Object.values(weather.response)[i]
-  //   })
-  // })
+  if (!Array.from(searchButton.classList).includes('active')) {
+    searchContainer.classList.add('expanded')
+    searchButton.classList.add('active')
+  } else {
+    const url = `http://localhost:3000/weather?location=${search.value}`
+    fetchWeather(url, (weather) => {
+      weatherItems.forEach((weatherItem, i) => {
+        weatherItem.innerHTML = Object.values(weather.response)[i]
+      })
+    })
+  }
 })
