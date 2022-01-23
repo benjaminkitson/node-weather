@@ -11,6 +11,7 @@ function fetchWeather(url, func) {
 
 }
 
+
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
