@@ -45,8 +45,8 @@ html {
   width: 100%;
   border: none;
   border-radius: 50px;
-  padding-right: 50px;
-  text-align: center;
+  padding-left: 25px;
+  text-align: left;
 }
 
 .search-button {
@@ -71,6 +71,7 @@ html {
 .search-button:hover {
   background-color: rgb(48, 158, 209);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .search-button:active {
