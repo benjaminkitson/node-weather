@@ -26,7 +26,7 @@ searchButton.addEventListener('mouseup', (e) => {
     searchButton.classList.add('active')
   } else {
     searchInfo.innerHTML = "Getting weather info!"
-    const url = `http://localhost:3000/weather?location=${search.value}`
+    const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather)
       if (typeof weather === 'string') {
