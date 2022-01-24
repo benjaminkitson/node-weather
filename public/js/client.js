@@ -16,6 +16,7 @@ const searchButton = document.querySelector('.search-button')
 const searchContainer = document.querySelector('.search-field-container')
 const search = document.querySelector('input')
 const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
+const searchInfo = document.querySelector('.search-info')
 
 
 searchButton.addEventListener('mouseup', (e) => {
@@ -23,20 +24,29 @@ searchButton.addEventListener('mouseup', (e) => {
   if (!Array.from(searchButton.classList).includes('active')) {
     searchContainer.classList.add('expanded')
     searchButton.classList.add('active')
-    searchField.focus()
   } else {
+    searchInfo.innerHTML = "Getting weather info!"
     const url = `http://localhost:3000/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather)
       if (typeof weather === 'string') {
-        weatherItems[0].innerHTML = weather
+        searchInfo.innerHTML = weather
+        weatherItems.forEach((weatherItem, i) => {
+        weatherItem.innerHTML = ''
+        })
       } else {
+        searchInfo.innerHTML = ''
         weatherItems.forEach((weatherItem, i) => {
         weatherItem.innerHTML = Object.values(weather.response)[i]
         })
       }
     })
   }
+})
+
+searchButton.addEventListener('mousedown', (e) => {
+  e.preventDefault()
+  searchField.focus()
 })
 
 searchField.addEventListener('blur', () => {

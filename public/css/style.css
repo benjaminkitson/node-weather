@@ -22,7 +22,7 @@ html {
 }
 
 .search {
-  height: 10%;
+  height: 8%;
   width: 100%;
   margin-bottom: 30px;
 }
@@ -76,6 +76,12 @@ html {
 
 .search-button:active {
   background-color: rgb(32, 134, 181);
+}
+
+.search-info {
+  height: 30px;
+  width: 20%;
+  margin-top: 20px;
 }
 
 .weather-container {
