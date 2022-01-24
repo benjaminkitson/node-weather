@@ -49,7 +49,8 @@ searchButton.addEventListener('mousedown', (e) => {
   searchField.focus()
 })
 
-searchField.addEventListener('blur', () => {
+searchField.addEventListener('blur', (e) => {
+  e.preventDefault()
   if (!searchField.value) {
     searchContainer.classList.remove('expanded')
     searchButton.classList.remove('active')
