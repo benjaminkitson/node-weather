@@ -1,6 +1,6 @@
 const request = require('postman-request');
-const secret = require('./secret.js');
-const geocode = secret.GEOCODE
+// const secret = require('./secret.js');
+const geocode = process.env.geocode_key
 
 function getGeocode(location, callback) {
   const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${geocode}`
