@@ -1,5 +1,4 @@
 const request = require('postman-request');
-// const secret = require('./secret.js');
 const weather = process.env.weather_key
 
 function getWeather({latitude, longitude}, callback) {

@@ -15,7 +15,7 @@ const searchField = document.querySelector('.search-field')
 const searchButton = document.querySelector('.search-button')
 const searchContainer = document.querySelector('.search-field-container')
 const search = document.querySelector('input')
-const weatherItems = Array.from(document.querySelectorAll('.weather-item'))
+const weatherData = Array.from(document.querySelectorAll('.weather-datum'))
 const searchInfo = document.querySelector('.search-info')
 
 
@@ -31,12 +31,12 @@ searchButton.addEventListener('mouseup', (e) => {
       console.log(weather)
       if (typeof weather === 'string') {
         searchInfo.innerHTML = weather
-        weatherItems.forEach((weatherItem, i) => {
-        weatherItem.innerHTML = ''
+        weatherData.forEach((weatherItem, i) => {
+        weatherDatumop.innerHTML = ''
         })
       } else {
         searchInfo.innerHTML = ''
-        weatherItems.forEach((weatherItem, i) => {
+        weatherData.forEach((weatherItem, i) => {
         weatherItem.innerHTML = Object.values(weather.response)[i]
         })
       }
