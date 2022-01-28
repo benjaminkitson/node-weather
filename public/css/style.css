@@ -99,7 +99,16 @@ html {
 }
 
 .weather-item {
-  height: 10%;
+  height: 14%;
+}
+
+.weather-datum {
+  height: 66%;
+}
+
+.weather-item-title {
+  height: 34%;
+  color: white;
 }
 
 /* footer */
@@ -128,6 +137,12 @@ html {
 .flex-center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 
