@@ -44,6 +44,28 @@ searchButton.addEventListener('mouseup', (e) => {
   }
 })
 
+window.addEventListener('keyup', (e) => {
+  e.preventDefault();
+  if (e.keyCode === 13 && document.activeElement === searchField) {
+    searchInfo.innerHTML = "Getting weather info!"
+    const url = `/weather?location=${search.value}`
+    fetchWeather(url, (weather) => {
+      console.log(weather)
+      if (typeof weather === 'string') {
+        searchInfo.innerHTML = weather
+        weatherData.forEach((weatherItem, i) => {
+          weatherDatumop.innerHTML = ''
+        })
+      } else {
+        searchInfo.innerHTML = ''
+        weatherData.forEach((weatherItem, i) => {
+          weatherItem.innerHTML = Object.values(weather.response)[i]
+        })
+      }
+    })
+  }
+})
+
 searchButton.addEventListener('mousedown', (e) => {
   e.preventDefault()
   window.scroll(0,0)
