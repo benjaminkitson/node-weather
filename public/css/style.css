@@ -22,13 +22,13 @@ html {
 }
 
 .heading {
-  height: 30%;
+  height: 50%;
   width: 100%;
 }
 
 .search {
+  height: 100px;
   width: 100%;
-  margin-bottom: 30px;
 }
 
 .search-field-container {
@@ -45,7 +45,7 @@ html {
 
 .search-field {
   font-size: 16px;
-  height: 50px;
+  height: 100%;
   width: 100%;
   border: none;
   border-radius: 50px;
@@ -53,17 +53,21 @@ html {
   text-align: left;
 }
 
+.search-info {
+  height: calc(100% - 50px);
+  width: 50%;
+}
+
 .search-button {
   position: absolute;
   right: 0;
   top: 0;
-  height: 50px;
+  height: 100%;
   width: 50px;
   background-color: rgb(167, 216, 255);
   color: black;
   border-radius: 40px;
   border: 2px solid rgb(75, 165, 255);
-  margin-left: 5px;
   transition: all 0.8s
 }
 
@@ -82,13 +86,9 @@ html {
   background-color: rgb(32, 134, 181);
 }
 
-.search-info {
-  height: 50px;
-  width: 20%;
-  margin-top: 20px;
-}
 
 .weather-container {
+  margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
@@ -141,5 +141,12 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }

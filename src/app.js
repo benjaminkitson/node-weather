@@ -19,22 +19,22 @@ app.use(express.static(
 
 app.get('', (req, res) => {
   res.render('index.hbs', {
-    title: "Home"
+    title: "Weather!"
   })
 })
 
-app.get('/about', (req, res) => {
-  res.render('about', {
-    title: "About"
-  })
-})
+// app.get('/about', (req, res) => {
+//   res.render('about', {
+//     title: "About"
+//   })
+// })
 
-app.get('/help', (req, res) => {
-  res.render('help', {
-    title: "Help",
-    text: "Here is some random meaningless text."
-  })
-})
+// app.get('/help', (req, res) => {
+//   res.render('help', {
+//     title: "Help",
+//     text: "Here is some random meaningless text."
+//   })
+// })
 
 app.get('/weather', (req, res) => {
   if (!req.query.location) {
@@ -61,17 +61,11 @@ app.get('/weather', (req, res) => {
 
 })
 
-app.get('/products', (req,res) => {
-  res.send({
-    products: []
-  })
-})
-
-app.get('/help/*', (req, res) => {
-  res.render('404', {
-    message: "No help topic here!"
-  })
-})
+// app.get('/help/*', (req, res) => {
+//   res.render('404', {
+//     message: "No help topic here!"
+//   })
+// })
 
 
 app.get('*', (req, res) => {
