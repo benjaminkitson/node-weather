@@ -1,10 +1,10 @@
 const request = require('postman-request');
-const geocode = process.env.geocode_key;
+const geocode = process.env.geocode_key || 'pk.eyJ1IjoiYmVuazEzIiwiYSI6ImNreWExNWFzYjAxM24ycW84dDZoNmp1eHoifQ.y2iTi6ZWriTeUu29Dwoszg';
+
 
 function getGeocode(location, callback) {
   const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${geocode}`
   request({ json: true, url: locationURL }, (error, response) => {
-    console.log(response)
     if (error) {
       callback("Request failed.", undefined)
     } else if (response.body.features.length === 0) {

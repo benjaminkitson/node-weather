@@ -11,18 +11,22 @@ html {
   font-weight: 200;
 }
 
+.header {
+  width: 100vw;
+  height: 20vh;
+}
 
 .content {
-  height: 90vh;
+  height: 70vh;
+  overflow-y: scroll;
 }
 
 .heading {
-  height: 10%;
+  height: 30%;
   width: 100%;
 }
 
 .search {
-  height: 8%;
   width: 100%;
   margin-bottom: 30px;
 }
@@ -79,7 +83,7 @@ html {
 }
 
 .search-info {
-  height: 30px;
+  height: 50px;
   width: 20%;
   margin-top: 20px;
 }

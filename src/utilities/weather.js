@@ -1,5 +1,5 @@
 const request = require('postman-request');
-const weather = process.env.weather_key
+const weather = process.env.weather_key || '2faed7e8eafc113ae52daf1dc6e39ea2'
 
 function getWeather({latitude, longitude}, callback) {
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${weather}`
