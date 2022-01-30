@@ -13,11 +13,11 @@ html {
 
 .header {
   width: 100vw;
-  height: 20vh;
+  height: 30vh;
 }
 
 .content {
-  height: 70vh;
+  height: 60vh;
   overflow-y: scroll;
 }
 
@@ -92,8 +92,8 @@ html {
   background-color: rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
-  width: 70%;
-  height: 65%;
+  width: 80%;
+  height: 90%;
   padding: 20px;
   overflow: scroll;
 }
