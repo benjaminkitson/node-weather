@@ -11,6 +11,10 @@ html {
   font-weight: 200;
 }
 
+body {
+  position: fixed;
+}
+
 .header {
   width: 100vw;
   height: 25vh;
