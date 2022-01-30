@@ -13,11 +13,11 @@ html {
 
 .header {
   width: 100vw;
-  height: 30vh;
+  height: 20vh;
 }
 
 .content {
-  height: 60vh;
+  height: 70vh;
   overflow-y: scroll;
 }
 
