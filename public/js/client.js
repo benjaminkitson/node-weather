@@ -21,6 +21,11 @@ const searchInfo = document.querySelector('.search-info')
 
 searchButton.addEventListener('mouseup', (e) => {
   e.preventDefault()
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
   if (!Array.from(searchButton.classList).includes('active')) {
     searchContainer.classList.add('expanded')
     searchButton.classList.add('active')
@@ -70,6 +75,10 @@ searchButton.addEventListener('mousedown', (e) => {
   e.preventDefault()
   window.scroll(0,0)
   searchField.focus()
+})
+
+searchField.addEventListener('focus', (e) => {
+  e.preventDefault()
 })
 
 searchField.addEventListener('blur', (e) => {
