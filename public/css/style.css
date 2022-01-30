@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(rgb(0, 98, 255), #64f2ff);
+  background: linear-gradient(rgb(0, 98, 255), #64f2ff) no-repeat fixed;
 }
 
 * {
@@ -18,7 +18,7 @@ html {
 
 .content {
   height: 75vh;
-  max-height: 75vh;
+  /* max-height: 75vh; */
   overflow-y: scroll;
 }
 
