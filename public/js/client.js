@@ -22,11 +22,11 @@ let folded = false
 
 searchButton.addEventListener('mouseup', (e) => {
   e.preventDefault()
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth'
-  });
+  // window.scrollTo({
+  //   top: 0,
+  //   left: 0,
+  //   behavior: 'smooth'
+  // });
   if (!Array.from(searchButton.classList).includes('active')) {
     searchContainer.classList.add('expanded')
     searchButton.classList.add('active')
@@ -55,6 +55,9 @@ searchButton.addEventListener('mouseup', (e) => {
 window.addEventListener('keyup', (e) => {
   e.preventDefault();
   if (e.keyCode === 13 && document.activeElement === searchField) {
+    if (folded === false && searchField.value != '') {
+      header.style.height = '140px'
+    }
     // searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
