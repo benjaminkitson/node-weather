@@ -30,6 +30,7 @@ html {
 .heading {
   height: calc(70px);
   width: 100%;
+  transition: opacity 0.2s, height 0.8s;
 }
 
 .search {
