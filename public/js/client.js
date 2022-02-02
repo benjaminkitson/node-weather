@@ -23,19 +23,16 @@ let folded = false
 
 
 function fold() {
-  function eventEnd(event) {
-    heading.addEventListener('transitionEnd', (e) => {
-      console.log(e)
+  if (folded === false && searchField.value != '') {
+    heading.addEventListener('transitionend', (e) => {
       if (e.propertyName = 'opacity') {
         heading.style.height = "0";
       } else {
         heading.style.display = "none";
       }
     })
-  }
-  if (folded === false && searchField.value != '') {
-    header.style.height = '140px';
-    heading.style.opacity = '0';
+    header.style.height = '100px'
+    heading.style.opacity = '0'
   }
 }
 
@@ -51,17 +48,7 @@ searchButton.addEventListener('mouseup', (e) => {
     searchContainer.classList.add('expanded');
     searchButton.classList.add('active');
   } else {
-    if (folded === false && searchField.value != '') {
-      heading.addEventListener('transitionend', (e) => {
-        if (e.propertyName = 'opacity') {
-          heading.style.height = "0";
-        } else {
-          heading.style.display = "none";
-        }
-      })
-      header.style.height = '140px'
-      heading.style.opacity = '0'
-    }
+    fold()
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather);
@@ -83,10 +70,7 @@ searchButton.addEventListener('mouseup', (e) => {
 window.addEventListener('keyup', (e) => {
   e.preventDefault();
   if (e.keyCode === 13 && document.activeElement === searchField) {
-    if (folded === false && searchField.value != '') {
-      header.style.height = '140px';
-      heading.style.opacity = '0';
-    }
+    fold()
     // searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
