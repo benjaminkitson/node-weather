@@ -17,6 +17,8 @@ const searchContainer = document.querySelector('.search-field-container')
 const search = document.querySelector('input')
 const weatherData = Array.from(document.querySelectorAll('.weather-datum'))
 const searchInfo = document.querySelector('.search-info')
+const header = document.queryselector('.header')
+let folded = false
 
 
 searchButton.addEventListener('mouseup', (e) => {
@@ -30,6 +32,9 @@ searchButton.addEventListener('mouseup', (e) => {
     searchContainer.classList.add('expanded')
     searchButton.classList.add('active')
   } else {
+    if (folded === false) {
+
+    }
     searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {

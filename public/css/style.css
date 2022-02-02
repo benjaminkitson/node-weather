@@ -14,7 +14,7 @@ html {
 
 .header {
   width: 100vw;
-  height: 25vh;
+  height: 100vh;
 }
 
 .content {
@@ -24,12 +24,12 @@ html {
 }
 
 .heading {
-  height: 50%;
+  height: 70px;
   width: 100%;
 }
 
 .search {
-  height: 100px;
+  height: 70px;
   width: 100%;
 }
 
