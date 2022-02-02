@@ -16,10 +16,10 @@ function getWeather({latitude, longitude}, callback) {
         temp,
         feelsLike,
         weather: formattedWeather,
-        icon: weather[0].icon,
         sunrise: new Date(sunrise*1000).toLocaleTimeString(),
         sunset: new Date(sunset*1000).toLocaleTimeString(),
         windSpeed,
+        icon: weather[0].icon,
       })
     }
   })

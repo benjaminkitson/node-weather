@@ -1,15 +1,15 @@
-// function fetchWeather(url, func) {
-//   fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.error) {
-//         func(data.error);
-//       } else {
-//         func(data);
-//       }
-//     });
+function fetchWeather(url, func) {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        func(data.error);
+      } else {
+        func(data);
+      }
+    });
 
-// }
+}
 
 const searchField = document.querySelector('.search-field');
 const searchButton = document.querySelector('.search-button');
@@ -18,6 +18,7 @@ const search = document.querySelector('input');
 const weatherData = Array.from(document.querySelectorAll('.weather-datum'));
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
+const icon = document.querySelector('.icon-image')
 let folded = false
 
 window.addEventListener('scroll', (e) => {
@@ -59,13 +60,14 @@ searchButton.addEventListener('mouseup', (e) => {
       console.log(weather);
       if (typeof weather === 'string') {
         // searchInfo.innerHTML = weather
-        weatherData.forEach((weatherItem, i) => {
-        weatherDatumop.innerHTML = ''
+        weatherData.forEach((weatherDatum, i) => {
+          weatherDatum.innerHTML = ''
         });
       } else {
         // searchInfo.innerHTML = ''
-        weatherData.forEach((weatherItem, i) => {
-        weatherItem.innerHTML = Object.values(weather.response)[i]
+        icon.src = `/images/${weather.response.icon}.png`
+        weatherData.forEach((weatherDatum, i) => {
+          weatherDatum.innerHTML = Object.values(weather.response)[i]
         });
       }
     });
@@ -82,12 +84,13 @@ window.addEventListener('keyup', (e) => {
       console.log(weather);
       if (typeof weather === 'string') {
         // searchInfo.innerHTML = weather
-        weatherData.forEach((weatherItem, i) => {
-          weatherDatumop.innerHTML = ''
+        weatherData.forEach((weatherDatum, i) => {
+          weatherDatum.innerHTML = ''
         });
+      } else {
         // searchInfo.innerHTML = ''
-        weatherData.forEach((weatherItem, i) => {
-          weatherItem.innerHTML = Object.values(weather.response)[i]
+        weatherData.forEach((weatherDatum, i) => {
+          weatherDatum.innerHTML = Object.values(weather.response)[i]
         });
       }
     });

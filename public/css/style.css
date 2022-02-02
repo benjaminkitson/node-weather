@@ -101,6 +101,7 @@ body {
 
 
 .weather-container {
+  position: relative;
   margin-top: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.3);
@@ -111,8 +112,17 @@ body {
   overflow: scroll;
 }
 
+
+.weather-icon {
+  position: absolute;
+  height: 128px;
+  width: 128px;
+  right: 10px;
+  top: calc(50% - 64px);
+}
+
 .weather-item {
-  height: 14%;
+  height: 16%;
 }
 
 .weather-datum {
