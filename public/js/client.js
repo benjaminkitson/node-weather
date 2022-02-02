@@ -20,7 +20,9 @@ const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
 let folded = false
 
-
+window.addEventListener('scroll', (e) => {
+  e.preventDefault()
+})
 
 function fold() {
   if (folded === false && searchField.value != '') {
@@ -34,6 +36,7 @@ function fold() {
     header.style.height = '100px'
     heading.style.opacity = '0'
   }
+  folded = true
 }
 
 
