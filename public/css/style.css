@@ -1,5 +1,7 @@
 html {
   background: linear-gradient(rgb(0, 98, 255), #64f2ff) no-repeat fixed;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 * {
