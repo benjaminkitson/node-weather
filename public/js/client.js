@@ -16,8 +16,7 @@ const searchButton = document.querySelector('.search-button')
 const searchContainer = document.querySelector('.search-field-container')
 const search = document.querySelector('input')
 const weatherData = Array.from(document.querySelectorAll('.weather-datum'))
-const searchInfo = document.querySelector('.search-info')
-const header = document.queryselector('.header')
+const header = document.querySelector('.header')
 let folded = false
 
 
@@ -32,20 +31,19 @@ searchButton.addEventListener('mouseup', (e) => {
     searchContainer.classList.add('expanded')
     searchButton.classList.add('active')
   } else {
-    if (folded === false) {
-
+    if (folded === false && searchField.value != '') {
+      header.style.height = '140px'
     }
-    searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather)
       if (typeof weather === 'string') {
-        searchInfo.innerHTML = weather
+        // searchInfo.innerHTML = weather
         weatherData.forEach((weatherItem, i) => {
         weatherDatumop.innerHTML = ''
         })
       } else {
-        searchInfo.innerHTML = ''
+        // searchInfo.innerHTML = ''
         weatherData.forEach((weatherItem, i) => {
         weatherItem.innerHTML = Object.values(weather.response)[i]
         })
@@ -57,17 +55,17 @@ searchButton.addEventListener('mouseup', (e) => {
 window.addEventListener('keyup', (e) => {
   e.preventDefault();
   if (e.keyCode === 13 && document.activeElement === searchField) {
-    searchInfo.innerHTML = "Getting weather info!"
+    // searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather)
       if (typeof weather === 'string') {
-        searchInfo.innerHTML = weather
+        // searchInfo.innerHTML = weather
         weatherData.forEach((weatherItem, i) => {
           weatherDatumop.innerHTML = ''
         })
       } else {
-        searchInfo.innerHTML = ''
+        // searchInfo.innerHTML = ''
         weatherData.forEach((weatherItem, i) => {
           weatherItem.innerHTML = Object.values(weather.response)[i]
         })
