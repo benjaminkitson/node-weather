@@ -25,6 +25,7 @@ window.addEventListener('scroll', (e) => {
 })
 
 function fold() {
+  searchField.blur()
   if (folded === false && searchField.value != '') {
     heading.addEventListener('transitionend', (e) => {
       if (e.propertyName = 'opacity') {
@@ -41,6 +42,7 @@ function fold() {
 
 
 searchButton.addEventListener('mouseup', (e) => {
+
   e.preventDefault();;
   // window.scrollTo({
   //   top: 0,
