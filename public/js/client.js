@@ -67,7 +67,7 @@ searchButton.addEventListener('mouseup', (e) => {
         // searchInfo.innerHTML = ''
         icon.src = `/images/${weather.response.icon}.png`
         weatherData.forEach((weatherDatum, i) => {
-          weatherDatum.innerHTML = Object.values(weather.response)[i]
+          weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
         });
       }
     });
@@ -90,7 +90,7 @@ window.addEventListener('keyup', (e) => {
       } else {
         // searchInfo.innerHTML = ''
         weatherData.forEach((weatherDatum, i) => {
-          weatherDatum.innerHTML = Object.values(weather.response)[i]
+          weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
         });
       }
     });
