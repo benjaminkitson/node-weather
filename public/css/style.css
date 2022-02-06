@@ -112,6 +112,16 @@ body {
   overflow: scroll;
 }
 
+.weather-summary {
+  margin-top: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  width: 80%;
+  height: 30%;
+  padding: 20px;
+  overflow: hidden;
+}
 
 .weather-icon {
   position: absolute;

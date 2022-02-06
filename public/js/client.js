@@ -16,9 +16,10 @@ const searchButton = document.querySelector('.search-button');
 const searchContainer = document.querySelector('.search-field-container');
 const search = document.querySelector('input');
 const weatherData = Array.from(document.querySelectorAll('.weather-datum'));
+const weatherDescription = document.querySelector('.weather-description')
+const icon = document.querySelector('.icon-image')
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
-const icon = document.querySelector('.icon-image')
 let folded = false
 
 window.addEventListener('scroll', (e) => {
@@ -65,7 +66,8 @@ searchButton.addEventListener('mouseup', (e) => {
         });
       } else {
         // searchInfo.innerHTML = ''
-        icon.src = `/images/${weather.response.icon}.png`
+        icon.src = `/images/${weather.response.topSection.icon}.png`
+        weatherDescription.innerHTML = weather.response.topSection.weather;
         weatherData.forEach((weatherDatum, i) => {
           weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
         });
@@ -89,6 +91,8 @@ window.addEventListener('keyup', (e) => {
         });
       } else {
         // searchInfo.innerHTML = ''
+        icon.src = `/images/${weather.response.topSection.icon}.png`
+        weatherDescription.innerHTML = weather.response.topSection.weather;
         weatherData.forEach((weatherDatum, i) => {
           weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
         });
