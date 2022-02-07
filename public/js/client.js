@@ -17,7 +17,7 @@ const searchContainer = document.querySelector('.search-field-container');
 const search = document.querySelector('input');
 const weatherData = Array.from(document.querySelectorAll('.weather-datum'));
 const weatherDescription = document.querySelector('.weather-description')
-const icon = document.querySelector('.icon-image')
+const icon = document.querySelector('.weather-icon')
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
 let folded = false
@@ -42,6 +42,17 @@ function fold() {
   folded = true
 }
 
+function setIcon(link) {
+  const iconPromise = new Promise((resolve, reject) => {
+    console.log('hello')
+    const iconImage = new Image(128, 128);
+    iconImage.src = `/images/${link}.png`;
+    resolve(icon.appendChild(iconImage));
+    reject('Operation failed.')
+  })
+
+  return iconPromise
+}
 
 searchButton.addEventListener('mouseup', (e) => {
 
@@ -66,11 +77,17 @@ searchButton.addEventListener('mouseup', (e) => {
         });
       } else {
         // searchInfo.innerHTML = ''
-        icon.src = `/images/${weather.response.topSection.icon}.png`
-        weatherDescription.innerHTML = weather.response.topSection.weather;
-        weatherData.forEach((weatherDatum, i) => {
-          weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
+        setIcon(weather.response.topSection.icon)
+        .then((result) => {
+          weatherDescription.innerHTML = weather.response.topSection.weather;
+          weatherData.forEach((weatherDatum, i) => {
+            weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
+          });
+        }).catch((error) => {
+          console.log(error)
         });
+        // icon.src = `/images/${weather.response.topSection.icon}.png`
+
       }
     });
   }

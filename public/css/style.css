@@ -107,7 +107,7 @@ body {
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
   width: 80%;
-  height: 90%;
+  height: 60%;
   padding: 20px;
   overflow: scroll;
 }
@@ -119,16 +119,17 @@ body {
   border-radius: 30px;
   width: 80%;
   height: 30%;
-  padding: 20px;
+  padding: 0px 20px 15px;
   overflow: hidden;
 }
 
 .weather-icon {
   height: 128px;
-  width: 128px;2}
+  width: 128px;
+}
 
 .weather-item {
-  height: 16%;
+  height: 20%;
 }
 
 .weather-datum {
