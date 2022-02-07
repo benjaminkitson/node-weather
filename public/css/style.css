@@ -99,6 +99,18 @@ body {
   background-color: rgb(32, 134, 181);
 }
 
+.location {
+  font-size: 30px;
+  height: 70px;
+  width: 100%;
+}
+
+.weather-summary {
+  font-size: 25px;
+  width: 80%;
+  height: 30%;
+  overflow: hidden;
+}
 
 .weather-container {
   position: relative;
@@ -109,15 +121,6 @@ body {
   height: 60%;
   padding: 20px;
   overflow: scroll;
-}
-
-.weather-summary {
-  font-size: 25px;
-  margin-top: 20px;
-  width: 80%;
-  height: 30%;
-  overflow: hidden;
-  margin-top: 25px;
 }
 
 .weather-icon {

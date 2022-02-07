@@ -20,6 +20,7 @@ const weatherDescription = document.querySelector('.weather-description')
 const icon = document.querySelector('.weather-icon')
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
+const locationDiv = document.querySelector('.location')
 let folded = false
 
 window.addEventListener('scroll', (e) => {
@@ -62,6 +63,7 @@ searchButton.addEventListener('mouseup', (e) => {
     searchButton.classList.add('active');
   } else {
     fold()
+    locationDiv.innerHTML = `"${search.value}"`
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather);
@@ -94,6 +96,7 @@ window.addEventListener('keyup', (e) => {
     fold()
     // searchInfo.innerHTML = "Getting weather info!"
     const url = `/weather?location=${search.value}`
+    locationDiv.innerHTML = `"${search.value}"`
     fetchWeather(url, (weather) => {
       console.log(weather);
       if (typeof weather === 'string') {
