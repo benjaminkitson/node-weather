@@ -27,7 +27,7 @@ window.addEventListener('scroll', (e) => {
 })
 
 function fold() {
-  searchField.blur()
+  searchField.blur();
   if (folded === false && searchField.value != '') {
     heading.addEventListener('transitionend', (e) => {
       if (e.propertyName = 'opacity') {
@@ -36,7 +36,7 @@ function fold() {
         heading.style.display = "none";
       }
     })
-    header.style.height = '100px'
+    header.style.height = '80px'
     heading.style.opacity = '0'
   }
   folded = true
@@ -57,11 +57,6 @@ function setIcon(link) {
 searchButton.addEventListener('mouseup', (e) => {
 
   e.preventDefault();;
-  // window.scrollTo({
-  //   top: 0,
-  //   left: 0,
-  //   behavior: 'smooth'
-  // });
   if (!Array.from(searchButton.classList).includes('active')) {
     searchContainer.classList.add('expanded');
     searchButton.classList.add('active');
@@ -131,8 +126,6 @@ searchField.addEventListener('focus', (e) => {
 searchField.addEventListener('blur', (e) => {
   e.preventDefault();
   window.scroll(0, 0);
-  if (!searchField.value) {
-    searchContainer.classList.remove('expanded')
-    searchButton.classList.remove('active')
-  }
+  searchContainer.classList.remove('expanded')
+  searchButton.classList.remove('active')
 })
