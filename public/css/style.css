@@ -123,6 +123,11 @@ body {
   overflow: scroll;
 }
 
+.icon-div {
+  height: 128px;
+  width: 128px;
+}
+
 .weather-icon {
   height: 128px;
   width: 128px;
