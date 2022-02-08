@@ -1,8 +1,3 @@
-html {
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
 .d-clear {
   background: linear-gradient(#0062ff, #64f2ff) no-repeat fixed;
   transition: background 0.5s;
@@ -36,8 +31,8 @@ body {
 }
 
 .content {
-  min-height: calc(100vh - 140px);
-  overflow-y: scroll;
+  height: calc(100vh - 80px);
+  overflow: scroll;
 }
 
 .heading {
@@ -126,7 +121,7 @@ body {
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
   width: 80%;
-  height: 60%;
+  height: 150px;
   padding: 20px;
   overflow: scroll;
   margin-bottom: 20px;
