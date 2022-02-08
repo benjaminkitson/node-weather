@@ -1,8 +1,11 @@
 html {
-  background: linear-gradient(rgb(0, 98, 255), #64f2ff) no-repeat fixed;
-  transition: background 0.5s;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+.d-clear {
+  background: linear-gradient(#0062ff, #64f2ff) no-repeat fixed;
+  transition: background 0.5s;
 }
 
 .n-clear {

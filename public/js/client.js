@@ -77,14 +77,16 @@ searchButton.addEventListener('mouseup', (e) => {
             return iconPromise
           })
           .then((result) => {
-            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
-              HTML.classList.add('n-clear')
-            }
             icon.src = result
             weatherDescription.innerHTML = weather.response.topSection.weather;
             weatherData.forEach((weatherDatum, i) => {
               weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
             });
+            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
+              HTML.classList.add('n-clear')
+            } else if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "d") {
+              HTML.classList.remove('n-clear')
+            }
           }).catch((error) => {
             console.log(error)
           });
@@ -122,14 +124,14 @@ window.addEventListener('keyup', (e) => {
             return iconPromise
           })
           .then((result) => {
-            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
-              HTML.classList.add('n-clear')
-            }
             icon.src = result
             weatherDescription.innerHTML = weather.response.topSection.weather;
             weatherData.forEach((weatherDatum, i) => {
               weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
             });
+            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
+              HTML.classList.add('n-clear')
+            }
           }).catch((error) => {
             console.log(error)
           });
