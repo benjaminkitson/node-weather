@@ -21,6 +21,7 @@ const icon = document.querySelector('.weather-icon')
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
 const locationDiv = document.querySelector('.location')
+const HTML = document.querySelector('html')
 let folded = false
 
 window.addEventListener('scroll', (e) => {
@@ -76,6 +77,9 @@ searchButton.addEventListener('mouseup', (e) => {
             return iconPromise
           })
           .then((result) => {
+            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
+              HTML.classList.add('n-clear')
+            }
             icon.src = result
             weatherDescription.innerHTML = weather.response.topSection.weather;
             weatherData.forEach((weatherDatum, i) => {
@@ -118,6 +122,9 @@ window.addEventListener('keyup', (e) => {
             return iconPromise
           })
           .then((result) => {
+            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
+              HTML.classList.add('n-clear')
+            }
             icon.src = result
             weatherDescription.innerHTML = weather.response.topSection.weather;
             weatherData.forEach((weatherDatum, i) => {
