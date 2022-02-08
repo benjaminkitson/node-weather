@@ -1,7 +1,13 @@
 html {
   background: linear-gradient(rgb(0, 98, 255), #64f2ff) no-repeat fixed;
+  transition: background 0.5s;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+.n-clear {
+  background: linear-gradient(rgb(0, 46, 120), #0462ae) no-repeat fixed;
+  transition: background 0.5s;
 }
 
 * {
