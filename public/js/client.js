@@ -20,7 +20,7 @@ const weatherDescription = document.querySelector('.weather-description')
 const icon = document.querySelector('.weather-icon')
 const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
-const locationDiv = document.querySelector('.location')
+const locationDiv = document.querySelector('.search-query')
 const HTML = document.querySelector('html')
 let folded = false
 
