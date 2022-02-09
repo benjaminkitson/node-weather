@@ -137,6 +137,7 @@ body {
   align-items: center;
   font-size: 20px;
   height: 70px;
+  min-height: 70px;
   width: 100%;
 }
 
@@ -169,7 +170,7 @@ body {
 /* Bottom section */
 
 .weather-results {
-  padding: 10px 50px 50px;
+  padding: 10px 20px 50px;
   gap: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
