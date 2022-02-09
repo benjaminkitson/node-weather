@@ -22,6 +22,14 @@ const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
 const locationDiv = document.querySelector('.search-query')
 const HTML = document.querySelector('html')
+
+
+const temperature = document.querySelector('.temperature')
+const sunset = document.querySelector('.sunset')
+const sunrise = document.querySelector('.sunrise')
+const windSpeed = document.querySelector('.wind-speed')
+const windDirection = document.querySelector('.wind-direction')
+
 let folded = false
 
 window.addEventListener('scroll', (e) => {
@@ -77,18 +85,25 @@ searchButton.addEventListener('mouseup', (e) => {
             return iconPromise
           })
           .then((result) => {
-            icon.src = result
+            icon.src = result;
             weatherDescription.innerHTML = weather.response.topSection.weather;
-            weatherData.forEach((weatherDatum, i) => {
-              weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
-            });
+            const weatherDetails = weather.response.bottomSection;
+            temperature.innerHTML = `${Math.round(weatherDetails.temp)}°C`;
+            sunrise.innerHTML = weatherDetails.sunrise;
+            sunset.innerHTML = weatherDetails.sunset;
+            windSpeed.innerHTML = weatherDetails.windSpeed;
+            windDirection.innerHTML = weatherDetails.windDeg;
+            // weatherData.forEach((weatherDatum, i) => {
+            //   weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
+            // });
+
             if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
-              HTML.classList.add('n-clear')
+              HTML.classList.add('n-clear');
             } else if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "d") {
-              HTML.classList.remove('n-clear')
+              HTML.classList.remove('n-clear');
             }
           }).catch((error) => {
-            console.log(error)
+            console.log(error);
           });
         // icon.src = `/images/${weather.response.topSection.icon}.png`
 
