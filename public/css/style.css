@@ -208,7 +208,9 @@ body {
   color: white;
 }
 
-
+.temperature {
+  font-size: 30px;
+}
 
 /* footer */
 

@@ -26,14 +26,11 @@ function getWeather({latitude, longitude, location}, callback) {
           sunset: new Date(sunset * 1000).toLocaleTimeString(),
           windSpeed,
           windDeg,
-          forecasts: {
-            daily,
-            hourly,
-            minutely
-          }
         },
-        test: {
-          weatherData
+        forecasts: {
+          daily,
+          hourly,
+          minutely
         }
       })
     }
