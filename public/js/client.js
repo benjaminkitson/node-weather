@@ -62,7 +62,7 @@ searchButton.addEventListener('mouseup', (e) => {
     searchButton.classList.add('active');
   } else {
     fold()
-    locationDiv.innerHTML = `"${search.value}"`
+    // locationDiv.innerHTML = `"${search.value}"`
     const url = `/weather?location=${search.value}`
     fetchWeather(url, (weather) => {
       console.log(weather);
@@ -85,6 +85,7 @@ searchButton.addEventListener('mouseup', (e) => {
             return iconPromise
           })
           .then((result) => {
+            locationDiv.innerHTML = weather.response.topSection.place
             icon.src = result;
             weatherDescription.innerHTML = weather.response.topSection.weather;
             const weatherDetails = weather.response.bottomSection;
