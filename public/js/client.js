@@ -52,7 +52,65 @@ function fold() {
   folded = true
 }
 
+function timeFormat(time) {
+  let isPM = false;
+  if (time[time.length-2] === "P") isPM = true;
+  const splitTime = time.split(":");
+  splitTime[0] = (isPM ? parseInt(splitTime[0]) + 12 : parseInt(splitTime[0])).toString();
+  splitTime[0] = (splitTime[0].length === 1 ? `0${splitTime[0]}` : splitTime[0])
+  const newTime = [splitTime[0], splitTime[1]].join(":");
+  return newTime
+}
 
+function insertWeather() {
+  const url = `/weather?location=${search.value}`
+  fetchWeather(url, (weather) => {
+    console.log(weather);
+    if (typeof weather === 'string') {
+      // searchInfo.innerHTML = weather
+      weatherData.forEach((weatherDatum, i) => {
+        weatherDatum.innerHTML = ''
+      });
+    } else {
+      console.log(weather.response.topSection.icon)
+      // searchInfo.innerHTML = ''
+      fetch(`/images/${weather.response.topSection.icon}.png`)
+        .then((response) => response.blob())
+        .then((imageBlob) => {
+          const iconPromise = new Promise((resolve, reject) => {
+            const iconURL = URL.createObjectURL(imageBlob)
+            resolve(iconURL)
+            reject("Image load failed")
+          })
+          return iconPromise
+        })
+        .then((result) => {
+          locationDiv.innerHTML = weather.response.topSection.place
+          icon.src = result;
+          weatherDescription.innerHTML = weather.response.topSection.weather;
+          const weatherDetails = weather.response.bottomSection;
+          temperature.innerHTML = `${Math.round(weatherDetails.temp)}°C`;
+          sunrise.innerHTML = timeFormat(weatherDetails.sunrise);
+          sunset.innerHTML = timeFormat(weatherDetails.sunset);
+          windSpeed.innerHTML = weatherDetails.windSpeed;
+          windDirection.innerHTML = weatherDetails.windDeg;
+          // weatherData.forEach((weatherDatum, i) => {
+          //   weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
+          // });
+
+          if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
+            HTML.classList.add('n-clear');
+          } else if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "d") {
+            HTML.classList.remove('n-clear');
+          }
+        }).catch((error) => {
+          console.log(error);
+        });
+      // icon.src = `/images/${weather.response.topSection.icon}.png`
+
+    }
+  });
+}
 
 searchButton.addEventListener('mouseup', (e) => {
 
@@ -62,54 +120,7 @@ searchButton.addEventListener('mouseup', (e) => {
     searchButton.classList.add('active');
   } else {
     fold()
-    // locationDiv.innerHTML = `"${search.value}"`
-    const url = `/weather?location=${search.value}`
-    fetchWeather(url, (weather) => {
-      console.log(weather);
-      if (typeof weather === 'string') {
-        // searchInfo.innerHTML = weather
-        weatherData.forEach((weatherDatum, i) => {
-          weatherDatum.innerHTML = ''
-        });
-      } else {
-        console.log(weather.response.topSection.icon)
-        // searchInfo.innerHTML = ''
-        fetch(`/images/${weather.response.topSection.icon}.png`)
-          .then((response) => response.blob())
-          .then((imageBlob) => {
-            const iconPromise = new Promise((resolve, reject) => {
-              const iconURL = URL.createObjectURL(imageBlob)
-              resolve(iconURL)
-              reject("Image load failed")
-            })
-            return iconPromise
-          })
-          .then((result) => {
-            locationDiv.innerHTML = weather.response.topSection.place
-            icon.src = result;
-            weatherDescription.innerHTML = weather.response.topSection.weather;
-            const weatherDetails = weather.response.bottomSection;
-            temperature.innerHTML = `${Math.round(weatherDetails.temp)}°C`;
-            sunrise.innerHTML = weatherDetails.sunrise;
-            sunset.innerHTML = weatherDetails.sunset;
-            windSpeed.innerHTML = weatherDetails.windSpeed;
-            windDirection.innerHTML = weatherDetails.windDeg;
-            // weatherData.forEach((weatherDatum, i) => {
-            //   weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
-            // });
-
-            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
-              HTML.classList.add('n-clear');
-            } else if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "d") {
-              HTML.classList.remove('n-clear');
-            }
-          }).catch((error) => {
-            console.log(error);
-          });
-        // icon.src = `/images/${weather.response.topSection.icon}.png`
-
-      }
-    });
+    insertWeather()
   }
 });
 
@@ -117,42 +128,7 @@ window.addEventListener('keyup', (e) => {
   e.preventDefault();
   if (e.keyCode === 13 && document.activeElement === searchField) {
     fold()
-    // searchInfo.innerHTML = "Getting weather info!"
-    const url = `/weather?location=${search.value}`
-    locationDiv.innerHTML = `"${search.value}"`
-    fetchWeather(url, (weather) => {
-      console.log(weather);
-      if (typeof weather === 'string') {
-        // searchInfo.innerHTML = weather
-        weatherData.forEach((weatherDatum, i) => {
-          weatherDatum.innerHTML = ''
-        });
-      } else {
-        // searchInfo.innerHTML = ''
-        fetch(`/images/${weather.response.topSection.icon}.png`)
-          .then((response) => response.blob())
-          .then((imageBlob) => {
-            const iconPromise = new Promise((resolve, reject) => {
-              const iconURL = URL.createObjectURL(imageBlob)
-              resolve(iconURL)
-              reject("Image load failed")
-            })
-            return iconPromise
-          })
-          .then((result) => {
-            icon.src = result
-            weatherDescription.innerHTML = weather.response.topSection.weather;
-            weatherData.forEach((weatherDatum, i) => {
-              weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
-            });
-            if (weather.response.topSection.icon[weather.response.topSection.icon.length - 1] === "n") {
-              HTML.classList.add('n-clear')
-            }
-          }).catch((error) => {
-            console.log(error)
-          });
-      }
-    });
+    insertWeather()
   }
 });
 
