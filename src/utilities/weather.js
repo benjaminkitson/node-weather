@@ -19,7 +19,6 @@ function getWeather({latitude, longitude}, callback) {
         },
         bottomSection: {
           temp,
-          feelsLike,
           sunrise: new Date(sunrise * 1000).toLocaleTimeString(),
           sunset: new Date(sunset * 1000).toLocaleTimeString(),
           windSpeed,
