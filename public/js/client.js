@@ -71,7 +71,15 @@ function timeFormat(time) {
 
 
 
-//C arries out the various fetchWeather operations needed to retrieve the data and insert it (this can be broken down further)
+// Converts tempaerature to Fahrenheit
+
+function fahrenheit(celsius) {
+  return (celsius * (9/5) + 32)
+}
+
+
+
+// Carries out the various fetchWeather operations needed to retrieve the data and insert it (this can be broken down further)
 
 function insertWeather() {
   const url = `/weather?location=${search.value}`
@@ -100,7 +108,8 @@ function insertWeather() {
           icon.src = result;
           weatherDescription.innerHTML = weather.response.topSection.weather;
           const weatherDetails = weather.response.bottomSection;
-          temperature.innerHTML = `${Math.round(weatherDetails.temp)}°C`;
+          const celsius = Math.round(weatherDetails.temp);
+          temperature.innerHTML = `${celsius}°C / ${Math.round(fahrenheit(celsius))}°F`;
           sunrise.innerHTML = timeFormat(weatherDetails.sunrise);
           sunset.innerHTML = timeFormat(weatherDetails.sunset);
           windSpeed.innerHTML = weatherDetails.windSpeed;
