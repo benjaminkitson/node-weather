@@ -11,7 +11,8 @@ function getWeather({latitude, longitude, location}, callback) {
       console.log(weatherData.error)
       callback("Unknown location.", undefined)
     } else {
-      const {temp, feels_like:feelsLike, weather, sunrise, sunset, wind_speed:windSpeed} = weatherData.current;
+      const {temp, feels_like:feelsLike, weather, sunrise, sunset, wind_speed:windSpeed, wind_deg:windDeg} = weatherData.current;
+      const {daily, hourly, minutely} = weatherData;
       const formattedWeather = weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1);
       callback(undefined, {
         topSection: {
@@ -24,6 +25,12 @@ function getWeather({latitude, longitude, location}, callback) {
           sunrise: new Date(sunrise * 1000).toLocaleTimeString(),
           sunset: new Date(sunset * 1000).toLocaleTimeString(),
           windSpeed,
+          windDeg,
+          forecasts: {
+            daily,
+            hourly,
+            minutely
+          }
         },
         test: {
           weatherData
