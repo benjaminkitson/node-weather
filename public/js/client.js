@@ -112,7 +112,7 @@ function insertWeather() {
           temperature.innerHTML = `${celsius}°C / ${Math.round(fahrenheit(celsius))}°F`;
           sunrise.innerHTML = timeFormat(weatherDetails.sunrise);
           sunset.innerHTML = timeFormat(weatherDetails.sunset);
-          windSpeed.innerHTML = weatherDetails.windSpeed;
+          windSpeed.innerHTML = `${weatherDetails.windSpeed}m/s`;
           windDirection.innerHTML = weatherDetails.windDeg;
           // weatherData.forEach((weatherDatum, i) => {
           //   weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
