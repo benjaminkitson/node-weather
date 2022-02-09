@@ -10,9 +10,11 @@ function getGeocode(location, callback) {
       callback("Unable to determine location.", undefined)
     } else {
       const [longitude, latitude] = response.body.features[0].center;
+      const location = response.body.features[0].place_name;
       callback(undefined, {
         latitude,
-        longitude
+        longitude,
+        location,
       })
     }
   })
