@@ -22,6 +22,10 @@ body {
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   transition: height 1s;
@@ -31,17 +35,37 @@ body {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   height: calc(100vh - 80px);
   overflow: scroll;
 }
 
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  height: 70px;
+  width: 100%;
+}
+
 .heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: calc(70px);
   width: 100%;
   transition: opacity 0.2s, height 0.8s;
 }
 
 .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 70px;
   width: 100%;
 }
@@ -78,6 +102,9 @@ body {
   position: absolute;
   right: 0;
   top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 50px;
   background-color: rgb(167, 216, 255);
@@ -102,13 +129,11 @@ body {
   background-color: rgb(32, 134, 181);
 }
 
-.location {
-  font-size: 30px;
-  height: 70px;
-  width: 100%;
-}
-
 .weather-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
   width: 100%;
   height: 300px;
@@ -141,10 +166,16 @@ body {
 }
 
 .weather-datum {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   height: 66%;
 }
 
 .weather-item-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   height: 34%;
   color: white;
 }
@@ -152,6 +183,9 @@ body {
 /* footer */
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 10vh;
   background-color: rgb(255, 255, 255);
@@ -164,6 +198,8 @@ body {
 
 .icons > ul {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
   width: 100%;
   height: 100%;
