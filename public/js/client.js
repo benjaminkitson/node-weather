@@ -1,15 +1,4 @@
-function fetchWeather(url, func) {
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        func(data.error);
-      } else {
-        func(data);
-      }
-    });
-
-}
+// document.querySelector chaos - relatively self explanatory, but should maybe spread out
 
 const searchField = document.querySelector('.search-field');
 const searchButton = document.querySelector('.search-button');
@@ -22,8 +11,6 @@ const header = document.querySelector('.header');
 const heading = document.querySelector('.heading');
 const locationDiv = document.querySelector('.search-query')
 const HTML = document.querySelector('html')
-
-
 const temperature = document.querySelector('.temperature')
 const sunset = document.querySelector('.sunset')
 const sunrise = document.querySelector('.sunrise')
@@ -32,9 +19,25 @@ const windDirection = document.querySelector('.wind-direction')
 
 let folded = false
 
-window.addEventListener('scroll', (e) => {
-  e.preventDefault()
-})
+
+
+// Function using callback syntax to specify what to do after the weather data is fetched
+
+function fetchWeather(url, func) {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        func(data.error);
+      } else {
+        func(data);
+      }
+    });
+}
+
+
+
+// Collapses the header down to the top of the page on first search
 
 function fold() {
   searchField.blur();
@@ -52,6 +55,10 @@ function fold() {
   folded = true
 }
 
+
+
+// Formats the sunrise and sunset times into 24H without seconds
+
 function timeFormat(time) {
   let isPM = false;
   if (time[time.length-2] === "P") isPM = true;
@@ -61,6 +68,10 @@ function timeFormat(time) {
   const newTime = [splitTime[0], splitTime[1]].join(":");
   return newTime
 }
+
+
+
+//Carries out the various fetchWeather operations needed to retrieve the data and insert it (this can be broken down further)
 
 function insertWeather() {
   const url = `/weather?location=${search.value}`
@@ -112,6 +123,9 @@ function insertWeather() {
   });
 }
 
+
+// Event listeners for searching the weather using enter key and button click
+
 searchButton.addEventListener('mouseup', (e) => {
 
   e.preventDefault();;
@@ -131,6 +145,10 @@ window.addEventListener('keyup', (e) => {
     insertWeather()
   }
 });
+
+
+
+//Event listeners for the variou search bar animations
 
 searchButton.addEventListener('mousedown', (e) => {
   e.preventDefault();
