@@ -23,19 +23,6 @@ app.get('', (req, res) => {
   })
 })
 
-// app.get('/about', (req, res) => {
-//   res.render('about', {
-//     title: "About"
-//   })
-// })
-
-// app.get('/help', (req, res) => {
-//   res.render('help', {
-//     title: "Help",
-//     text: "Here is some random meaningless text."
-//   })
-// })
-
 app.get('/weather', (req, res) => {
   if (!req.query.location) {
     return res.send({
@@ -60,13 +47,6 @@ app.get('/weather', (req, res) => {
   })
 
 })
-
-// app.get('/help/*', (req, res) => {
-//   res.render('404', {
-//     message: "No help topic here!"
-//   })
-// })
-
 
 app.get('*', (req, res) => {
   res.render('404', {
