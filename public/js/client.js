@@ -71,7 +71,7 @@ function timeFormat(time) {
 
 
 
-//Carries out the various fetchWeather operations needed to retrieve the data and insert it (this can be broken down further)
+//C arries out the various fetchWeather operations needed to retrieve the data and insert it (this can be broken down further)
 
 function insertWeather() {
   const url = `/weather?location=${search.value}`
