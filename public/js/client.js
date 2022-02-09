@@ -70,6 +70,16 @@ function timeFormat(time) {
 
 
 
+// Formats the 'place'
+
+function formatPlace(place) {
+  const words = place.split(", ");
+  return `${words[0]}, ${words[words.length-1]}`
+}
+
+
+
+
 // Converts tempaerature to Fahrenheit
 
 function fahrenheit(celsius) {
@@ -103,7 +113,7 @@ function insertWeather() {
           return iconPromise
         })
         .then((result) => {
-          locationDiv.innerHTML = weather.response.topSection.place
+          locationDiv.innerHTML = formatPlace(weather.response.topSection.place)
           icon.src = result;
           weatherDescription.innerHTML = weather.response.topSection.weather;
           const weatherDetails = weather.response.bottomSection;
