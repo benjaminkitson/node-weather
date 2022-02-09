@@ -243,6 +243,10 @@ body {
   filter: invert(1);
 }
 
+.wind-direction > i {
+  transition: transform 0.5s;
+}
+
 
 
 

@@ -20,7 +20,6 @@ const windDirection = document.querySelector('.wind-direction')
 let folded = false
 
 
-
 // Function using callback syntax to specify what to do after the weather data is fetched
 
 function fetchWeather(url, func) {
@@ -113,7 +112,7 @@ function insertWeather() {
           sunrise.innerHTML = timeFormat(weatherDetails.sunrise);
           sunset.innerHTML = timeFormat(weatherDetails.sunset);
           windSpeed.innerHTML = `${weatherDetails.windSpeed}m/s`;
-          windDirection.innerHTML = weatherDetails.windDeg;
+          windDirection.firstElementChild.style.transform = `rotate(${weatherDetails.windDeg}deg)`
           // weatherData.forEach((weatherDatum, i) => {
           //   weatherDatum.innerHTML = Object.values(weather.response.bottomSection)[i]
           // });
