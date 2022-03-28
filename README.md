@@ -1,4 +1,4 @@
-A very basic weather web app, using node.js. It uses the mapbox geocoder api to generate coordinated from a search, and the openweathermap api to obtain weather data from them.
+A very basic weather web app, using node.js. It uses the mapbox geocoder api to generate coordinates from a search, and the openweathermap api to obtain weather data from them.
 
 The project started out as an attempt to get to grips with building a basic node.js backend. That turned out to be much more straightforward than I imagined, and it has now become a bit of front end playground for me, to practice implementing some neat transitions etc. 
 
